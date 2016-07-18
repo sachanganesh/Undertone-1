@@ -7,8 +7,8 @@
         <meta name="description" content="The best cuisines in every region">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="public/stylesheets/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="public/stylesheets/main.css">
+        <link rel="stylesheet" href="public/styles/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="public/styles/main.css">
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -20,10 +20,10 @@
 
         <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.2.min.js"><\/script>')</script>
-        <script src="public/javascripts/bootstrap/bootstrap.min.js"></script>
+        <script src="public/scripts/bootstrap/bootstrap.min.js"></script>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script src="https://d3js.org/topojson.v1.min.js"></script>
-        <script src="public/javascripts/main.js"></script>
+        <script src="public/scripts/main.js"></script>
 
         <script>
             var svg = d3.select("article").append("svg")
@@ -33,7 +33,7 @@
             var projection = d3.geoAlbersUsa();
             var path = d3.geoPath().projection(projection);
 
-            d3.json("public/javascripts/us-county.json", function(us) {
+            d3.json("public/scripts/us-county.json", function(us) {
                 svg.selectAll("append")
                     .data(topojson.feature(us, us.objects.counties).features)
                     .enter()
