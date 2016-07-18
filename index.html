@@ -33,20 +33,24 @@
             var projection = d3.geoAlbersUsa();
             var path = d3.geoPath().projection(projection);
 
-            d3.json("public/scripts/us-county.json", function(us) {
-                svg.selectAll("append")
-                    .data(topojson.feature(us, us.objects.counties).features)
-                    .enter()
-                    .append("path")
-                    .attr("d", path)
-					.attr("id", function(d) { return d.id })
-                    .on("mouseover", function(d) {
-						// var countyID = d3.select(this).attr("id");
-                        d3.select(this).style("fill", "red");
-                    })
-                    .on("mouseout", function(d) {
-                        d3.select(this).style("fill", "black");
-                    });
+            d3.json("./public/scripts/us-county.json", function(us) {
+				d3.json("./public/scripts/testData.json", function(rawFIPSCodes) {
+					window.fipsCodes = JSON.parse(rawFIPSCodes)
+
+	                svg.selectAll("append")
+	                    .data(topojson.feature(us, us.objects.counties).features)
+	                    .enter()
+	                    .append("path")
+	                    .attr("d", path)
+						.attr("countyName", function(d) { return fipsCodes[d.id]["county"]; })
+	                    .on("mouseover", function(d) {
+							// var countyID = d3.select(this).attr("id");
+	                        d3.select(this).style("fill", "red");
+	                    })
+	                    .on("mouseout", function(d) {
+	                        d3.select(this).style("fill", "black");
+	                    });
+				});
             });
         </script>
 
