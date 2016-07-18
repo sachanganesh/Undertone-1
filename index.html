@@ -43,6 +43,7 @@
 	                    .append("path")
 	                    .attr("d", path)
 						.attr("countyName", function(d) { return fipsCodes[d.id]["county"]; })
+						.attr("stateName", function(d) { return fipsCodes[d.id]["state"]; })
 	                    .on("mouseover", function(d) {
 							// var countyID = d3.select(this).attr("id");
 	                        d3.select(this).style("fill", "red");
