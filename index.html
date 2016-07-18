@@ -15,7 +15,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <article>
-            <p>Hello world!</p>
+            <p>Hover over a county</p>
         </article>
 
         <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
@@ -39,7 +39,9 @@
                     .enter()
                     .append("path")
                     .attr("d", path)
+					.attr("id", function(d) { return d.id })
                     .on("mouseover", function(d) {
+						// var countyID = d3.select(this).attr("id");
                         d3.select(this).style("fill", "red");
                     })
                     .on("mouseout", function(d) {
