@@ -15,7 +15,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <article>
-            <p>Hover over a county</p>
+            <p id="county-label">Hover over a county</p>
         </article>
 
         <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
@@ -45,7 +45,10 @@
 						.attr("countyName", function(d) { return fipsCodes[d.id]["county"]; })
 						.attr("stateName", function(d) { return fipsCodes[d.id]["state"]; })
 	                    .on("mouseover", function(d) {
-							// var countyID = d3.select(this).attr("id");
+							var countyName = d3.select(this).attr("countyName");
+							var stateName = d3.select(this).attr("stateName");
+
+							$("#county-label").html(countyName + ", " + stateName);
 	                        d3.select(this).style("fill", "red");
 	                    })
 	                    .on("mouseout", function(d) {
